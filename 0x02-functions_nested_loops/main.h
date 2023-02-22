@@ -8,3 +8,4 @@
  */
 int putchar(char c);
 
+#endif
