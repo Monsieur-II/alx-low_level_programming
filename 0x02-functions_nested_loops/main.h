@@ -2,10 +2,10 @@
 #define MAIN_HEADER
 
 /**
- * puthcar - prints a character to standard output
+ * _putchar - prints a character to standard output
  *
  * Return: The character
  */
-int putchar(char c);
+int _putchar(char c);
 
 #endif
