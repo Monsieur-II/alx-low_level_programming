@@ -18,6 +18,7 @@ int main(void)
 	_putchar('\n');
 	print_numbers();
 	print_most_numbers();
+	more_numbers();
 	
 	return (0);
 }
