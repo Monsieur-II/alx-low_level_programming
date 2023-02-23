@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 /** main - entry
  *
  * Return: 0
@@ -11,10 +12,10 @@ int main(void)
 	_putchar(r + '0');
 	r = _isupper('C');
 	_putchar(r + '0');
+
+	r = mul(5, 7);
+	printf("%d \n", r);
 	_putchar('\n');
-
-	r = _isdigit(5);
-	r = _putchar(r + '0');
-
+	
 	return (0);
 }
