@@ -21,6 +21,7 @@ int main(void)
 	more_numbers();
 	print_line(7);
 	print_diagonal(7);
+	print_square(4);
 	
 	return (0);
 }
