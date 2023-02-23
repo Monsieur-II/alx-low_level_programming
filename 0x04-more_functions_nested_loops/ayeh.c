@@ -13,5 +13,8 @@ int main(void)
 	_putchar(r + '0');
 	_putchar('\n');
 
+	r = _isdigit(5);
+	r = _putchar(r + '0');
+
 	return (0);
 }
