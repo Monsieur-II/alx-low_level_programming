@@ -17,6 +17,7 @@ int main(void)
 	printf("%d \n", r);
 	_putchar('\n');
 	print_numbers();
+	print_most_numbers();
 	
 	return (0);
 }
