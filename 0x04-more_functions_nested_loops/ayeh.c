@@ -22,6 +22,7 @@ int main(void)
 	print_line(7);
 	print_diagonal(7);
 	print_square(4);
+	print_triangle(5);
 	
 	return (0);
 }
