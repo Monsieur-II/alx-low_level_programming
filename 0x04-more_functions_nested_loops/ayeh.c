@@ -20,6 +20,7 @@ int main(void)
 	print_most_numbers();
 	more_numbers();
 	print_line(7);
+	print_diagonal(7);
 	
 	return (0);
 }
