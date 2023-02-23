@@ -19,6 +19,7 @@ int main(void)
 	print_numbers();
 	print_most_numbers();
 	more_numbers();
+	print_line(7);
 	
 	return (0);
 }
