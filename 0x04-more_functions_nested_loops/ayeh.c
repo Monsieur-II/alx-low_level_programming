@@ -16,6 +16,7 @@ int main(void)
 	r = mul(5, 7);
 	printf("%d \n", r);
 	_putchar('\n');
+	print_numbers();
 	
 	return (0);
 }
