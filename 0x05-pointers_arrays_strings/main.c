@@ -4,14 +4,16 @@ int main()
 {
 	int n = 8;
 	int *p = &n;
+	char *str;
+	char *k;
+
 
 	reset_to_98(p);
 	printf("%d\n", n);	
-	char s[7] = "School";
-	char *str = s;
+	str = "School";
 	printf("%d\n", _strlen(str));
 	
-	char *k = "My love";
+	k = "My love";
 	print_rev(k);
 
 
