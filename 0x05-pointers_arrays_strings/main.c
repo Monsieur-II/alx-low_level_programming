@@ -6,6 +6,10 @@ int main()
 	int *p = &n;
 
 	reset_to_98(p);
-	printf("%d\n", n);
+	printf("%d\n", n);	
+	char s[7] = "School";
+	char *str = s;
+	printf("%d\n", _strlen(str));
+
 	return (0);
 }	
