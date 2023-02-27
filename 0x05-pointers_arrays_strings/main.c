@@ -10,6 +10,10 @@ int main()
 	char s[7] = "School";
 	char *str = s;
 	printf("%d\n", _strlen(str));
+	
+	char *k = "My love";
+	print_rev(k);
+
 
 	return (0);
 }	
