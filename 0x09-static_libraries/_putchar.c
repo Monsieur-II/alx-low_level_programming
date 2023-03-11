@@ -1,8 +1,8 @@
 #include <unistd.h>
 /**
- * main -entry point
+ * _putchar -entry point
  *
- *
+ *@c: character to be printed
  * Return: char c
  */
 int _putchar(char c)
