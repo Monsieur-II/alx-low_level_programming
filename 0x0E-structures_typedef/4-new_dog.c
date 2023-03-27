@@ -1,12 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "dog.h"
 
-typedef struct dog
-{
-    char *name;
-    float age;
-    char *owner;
-} dog_t;
+/**
+ * new_dog - creates a new dog
+ * @name: name of dog
+ * @age: age of dog
+ * @owner: owner of dog
+ *
+ * Return: pointer to dog or null otherwise
+ */
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
@@ -18,13 +21,4 @@ dog_t *new_dog(char *name, float age, char *owner)
     dog->age = age;
     dog->owner = owner;
     return (dog);
-}
-int main()
-{
-    dog_t *myDog;
-
-    myDog = new_dog("Poppy", 3.5, "Bob");
-    printf("My name is %s, and I am %.1f :) - Woof!\n", myDog->name, myDog->age);
-
-    return (0);
 }
