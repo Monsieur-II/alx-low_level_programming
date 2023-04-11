@@ -27,7 +27,7 @@ unsigned int binary_to_uint(const char *b)
 	unsigned int decimal = 0;
 	int i, j, digit;
 
-	if (b == NULL)
+	if (!b)
 		return (0);
 
 	len = _strlen(b);
