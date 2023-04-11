@@ -27,9 +27,11 @@ unsigned int binary_to_uint(const char *b)
 	unsigned int decimal = 0;
 	int i, j, digit;
 
+	if (b == NULL)
+		return (0);
 	for (i = len - 1, j = 0; i >= 0; i--, j++)
 	{
-		if ((b[i] != '0' && b[i] != '1') || (b == NULL))
+		if (b[i] != '0' && b[i] != '1')
 			return (0);
 		digit = b[i] - '0';
 		decimal = decimal + (digit << j);
