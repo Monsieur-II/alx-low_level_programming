@@ -23,7 +23,6 @@ int _strlen(const char *s)
  */
 unsigned int binary_to_uint(const char *b)
 {
-	int len = _strlen(b);
 	unsigned int decimal = 0;
 	int i, j, digit;
 
