@@ -6,7 +6,7 @@
  *
  * Return: 0;
  */
-int _strlen(char *s)
+int _strlen(const char *s)
 {
 	int a = 0;
 
@@ -32,7 +32,7 @@ unsigned int binary_to_uint(const char *b)
 		if ((b[i] != '0' && b[i] != '1') || (b == NULL))
 			return (0);
 		digit = b[i] - '0';
-		decimal = decimal + (digit * (2 ^ j));
+		decimal = decimal + (digit << j);
 	}
 
 	return (decimal);
