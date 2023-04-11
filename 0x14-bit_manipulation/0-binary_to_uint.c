@@ -23,13 +23,14 @@ int _strlen(const char *s)
  */
 unsigned int binary_to_uint(const char *b)
 {
+	int len;
 	unsigned int decimal = 0;
 	int i, j, digit;
 
 	if (!b)
 		return (0);
 
-	int len = _strlen(b);
+	len = _strlen(b);
 
 	for (i = len - 1, j = 0; i >= 0; i--, j++)
 	{
