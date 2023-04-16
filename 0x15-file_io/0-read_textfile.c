@@ -1,3 +1,4 @@
+#include "main.h"
 /*
  * ssize_t read_textfile - reads text file and prints to stdout
  * @filename: name of file
