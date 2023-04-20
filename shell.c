@@ -30,6 +30,12 @@ int main(void)
             token = strtok(NULL, "\n ");
         }
         argv[i] = NULL;
+	if (!*argv)
+	{
+		free(line_read);
+		line_read = NULL;
+		continue;
+	}
 
         pid = fork();
         if (pid == -1)
@@ -41,15 +47,16 @@ int main(void)
         {
             if ((execve(argv[0], argv, NULL)) == -1)
             {
-                perror("Error");
-                exit(-1);
+                if (errno == ENOENT)
+			fprintf(stderr,"sh: 1: %s: not found\n", *argv);
+		exit(-1);
             }
         }
         else
         {
             wait(&status);
         }
-        if (line_read !== NULL)
+        if (line_read != NULL)
 	{
 		free(line_read);
 		line_read = NULL;
