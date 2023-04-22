@@ -10,13 +10,13 @@
  */
 
 #define INITIAL_BUFFER_SIZE 1024
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
+ssize_t _getline(char **lineptr, size_t *n, int fd)
 {
     static size_t buffer_size = INITIAL_BUFFER_SIZE;
     ssize_t num_read = 0;
     char *buf = *lineptr;
 
-    if (buf = NULL || *n < buffer_size)
+    if (buf == NULL || *n < buffer_size)
     {
         buffer_size = INITIAL_BUFFER_SIZE; // resetting buffersize's value regardless of previous call
         if ((buf = realloc(buf, buffer_size)) == NULL)
@@ -26,9 +26,9 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
     *lineptr = buf;
     *n = buffer_size; // update buffer and its after realloc
 
-    while ((num_read = read(stream, buf, buffer_size - 1)) > 0) // num_read > means EOF not reached so we loop
+    while ((num_read = read(fd, buf, buffer_size - 1)) > 0) // num_read > means EOF not reached so we loop
     {
-        if (buf[num_read - 1] == \n) // break upon newline and terminate buffer with '\0'
+        if (buf[num_read - 1] == '\n') // break upon newline and terminate buffer with '\0'
         {
             buf[num_read] = '\0';
             *lineptr = buf;

@@ -9,16 +9,17 @@ int main(void)
 {
     char *line_read = NULL, *token, *argv[3];
     int i, status;
-    size_t n;
-    ssize_t nread;
+    size_t n = 64;
     pid_t pid;
 
     while (1)
     {
         printf("#cisfun$ ");
-        n = 0;
+        line_read = malloc(n);
+	if (line_read == NULL)
+		exit(EXIT_FAILURE);
 
-        if ((nread = _getline(&line_read, &n, stdin)) == -1)
+        if (_getline(&line_read, &n, STDIN_FILENO) == -1)
             exit(EXIT_FAILURE);
 
         token = strtok(line_read, "\n ");
