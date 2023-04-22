@@ -48,9 +48,8 @@ int main(void)
         {
             if ((execve(argv[0], argv, NULL)) == -1)
             {
-                if (errno == ENOENT)
-			fprintf(stderr,"sh: 1: %s: not found\n", *argv);
-		exit(-1);
+		perror("Error");
+		exit(EXIT_FAILURE);
             }
         }
         else
