@@ -33,7 +33,7 @@ ssize_t _getline(char **lineptr, size_t *n, int fd)
             buf[num_read] = '\0';
             *lineptr = buf;
             *n = buffer_size;
-            break;
+            return (num_read);
         }
 
         buffer_size *= 2;
@@ -41,13 +41,6 @@ ssize_t _getline(char **lineptr, size_t *n, int fd)
             return (-1);
     }
 
-    if (num_read == -1)
+    if (num_read == -1 || num_read == 0 )
         return (-1);
-
-    else if (num_read == 0) // upon EOF, update buffer and its size after realloc in loop, then terminate it
-    {
-        *lineptr = buf;
-        *n = buffer_size;
-        lineptr[num_read] = '\0';
-    }
 }

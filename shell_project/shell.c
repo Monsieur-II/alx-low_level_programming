@@ -15,12 +15,14 @@ int main(void)
     while (1)
     {
         printf("#cisfun$ ");
+	fflush(stdout);
+
         line_read = malloc(n);
 	if (line_read == NULL)
 		exit(EXIT_FAILURE);
 
-        if (_getline(&line_read, &n, STDIN_FILENO) == -1)
-            exit(EXIT_FAILURE);
+        if (_getline(&line_read, &n, stdin) == -1)
+		exit(EXIT_FAILURE);
 
         token = strtok(line_read, "\n ");
         i = 0;

@@ -23,7 +23,7 @@ int main (void)
 	size_t n = 0;
 	FILE * fp = fopen("textfile.txt", "r");
 
-	if (getline(&buffer, &n, fp) != -1)
+	if (getline(&buffer, &n, stdin) != -1)
 		printf("%s", buffer);
 	free(buffer);
 	fclose(fp);
