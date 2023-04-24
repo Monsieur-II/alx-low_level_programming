@@ -1,9 +1,11 @@
 #include "main.h"
 
-extern char **environ;
 /**
  * main - simple shell that runs commands with their full path, without
  * arguments
+ * @argc: argument count
+ * @argv: argument vector
+ * @env: pointer to environment variables
  *
  * Return (0);
  */
@@ -70,7 +72,7 @@ int main(int argc, char **argv, char **env)
                 }
                 else if (pid == 0)
                 {
-                    if ((execve(command_path, args, environ)) == -1)
+                    if ((execve(command_path, args, env)) == -1)
                     {
                         perror("Error");
                         exit(EXIT_FAILURE);
