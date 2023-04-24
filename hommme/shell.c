@@ -10,12 +10,12 @@ extern char **environ;
 int main(int argc, char **argv, char **env)
 {
     char *line_read = NULL, *token, *path, *args[64];
-    char *path_env, command_path[MAX_COMMAND_LEN];
+    char path_env[1024], command_path[MAX_COMMAND_LEN];
     int i, status;
     size_t n = 64;
     pid_t pid;
 
-    path_env, getenv("PATH");
+    strcpy(path_env, getenv("PATH"));
 
     while (1)
     {
@@ -37,7 +37,7 @@ int main(int argc, char **argv, char **env)
             token = strtok(NULL, "\n ");
         }
         args[i] = NULL;
-        if (!*args)
+        if (!args[0])
         {
             free(line_read);
             line_read = NULL;
@@ -55,6 +55,7 @@ int main(int argc, char **argv, char **env)
             {
                 /* Write full path of command into one string and check if it exists (combination of char *path + args[0]). */
                 strcpy(command_path, path);
+		strcat(command_path, "/");
                 strcat(command_path, args[0]);
             }
 
