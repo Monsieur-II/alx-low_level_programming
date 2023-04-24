@@ -6,18 +6,17 @@ extern char **environ;
  *
  * Return (0);
  */
-int main(void)
+int main(int argc, char **argv, char **env)
 {
-    char *line_read = NULL, *token, *argv[3];
+    char *line_read = NULL, *token, *args[3];
     int i, status;
     size_t n = 64;
     pid_t pid;
 
     while (1)
     {
-        printf("#cisfun$ ");
-	fflush(stdout);
-
+        write(STDOUT_FILENO, "$ ", 2);
+	
         line_read = malloc(n);
 	if (line_read == NULL)
 		exit(EXIT_FAILURE);
@@ -30,11 +29,11 @@ int main(void)
 
         while (token)
         {
-            argv[i++] = token;
+            args[i++] = token;
             token = strtok(NULL, "\n ");
         }
         argv[i] = NULL;
-	if (!*argv)
+	if (!*args)
 	{
 		free(line_read);
 		line_read = NULL;
@@ -49,7 +48,7 @@ int main(void)
         }
         else if (pid == 0)
         {
-            if ((execve(argv[0], argv, environ)) == -1)
+            if ((execve(args[0], args, environ)) == -1)
             {
 		perror("Error");
 		exit(EXIT_FAILURE);
