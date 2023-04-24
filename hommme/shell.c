@@ -15,7 +15,7 @@ int main(int argc, char **argv, char **env)
     size_t n = 64;
     pid_t pid;
 
-    strcpy(path_env, getenv("PATH"));
+    path_env, getenv("PATH");
 
     while (1)
     {
@@ -69,7 +69,7 @@ int main(int argc, char **argv, char **env)
                 }
                 else if (pid == 0)
                 {
-                    if ((execve(command_path, args, NULL)) == -1)
+                    if ((execve(command_path, args, environ)) == -1)
                     {
                         perror("Error");
                         exit(EXIT_FAILURE);
