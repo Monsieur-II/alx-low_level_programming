@@ -1,4 +1,5 @@
 #include "main.h"
+extern char **environ;
 /**
  * main - simple shell that runs commands with their full path, without
  * arguments
@@ -21,7 +22,7 @@ int main(void)
 	if (line_read == NULL)
 		exit(EXIT_FAILURE);
 
-        if (_getline(&line_read, &n, stdin) == -1)
+        if (_getline(&line_read, &n, STDIN_FILENO) == -1)
 		exit(EXIT_FAILURE);
 
         token = strtok(line_read, "\n ");
@@ -48,7 +49,7 @@ int main(void)
         }
         else if (pid == 0)
         {
-            if ((execve(argv[0], argv, NULL)) == -1)
+            if ((execve(argv[0], argv, environ)) == -1)
             {
 		perror("Error");
 		exit(EXIT_FAILURE);
