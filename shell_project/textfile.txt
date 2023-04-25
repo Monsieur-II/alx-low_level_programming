@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-he is a very good boy\nhe is her\0\0\0kdjkdjkd\n
-=======
-he is a very good bo\0\0\0\0y
->>>>>>> 9c6e289addee8564e39f382d80960c6fb4b56209
