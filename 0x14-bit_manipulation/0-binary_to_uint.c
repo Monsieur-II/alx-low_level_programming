@@ -13,7 +13,7 @@ unsigned int binary_to_uint(const char *b)
 	int power, len;
 	unsigned int dec = 0;
 
-	if (b == NULL)
+	if (!b)
 		return (1);
 
 	for (len = 0; b[len]; len++)
