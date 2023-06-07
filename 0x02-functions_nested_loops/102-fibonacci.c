@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	signed long int a, b, fibo;
+	unsigned long int a, b, fibo;
 	int i;
 
 	a = 1;
