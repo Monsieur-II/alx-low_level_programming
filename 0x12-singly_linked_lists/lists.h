@@ -25,4 +25,7 @@ list_t *add_node_end(list_t **head, const char *str);
 void free_list(list_t *head);
 int _putchar(char c);
 
+/*Experimental recusive function in task 4*/
+void recursive_free_list(list_t *head);
+
 #endif
