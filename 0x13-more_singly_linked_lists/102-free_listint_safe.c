@@ -1,11 +1,11 @@
 #include "lists.h"
 
 /**
- * print_len_safe - function that prints a linked list with a loop safely.
+ * get_len_safe - gets length of a linked list with a loop safely.
  * @head: pointer to the 1st node of the linked list
  * Return: no. of elements in list
  */
-size_t print_len_safe(const listint_t *head)
+size_t get_len_safe(const listint_t *head)
 {
 	const listint_t *tmp_n = NULL;
 	const listint_t *l_n = NULL;
@@ -46,7 +46,7 @@ size_t free_listint_safe(listint_t **h)
 	if (!h || !*h)
 		return (0);
 
-	len = print_len_safe(*h);
+	len = get_len_safe(*h);
 	i = 0;
 	while (i < len)
 	{
