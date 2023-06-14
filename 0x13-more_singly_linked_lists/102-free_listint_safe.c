@@ -1,6 +1,38 @@
 #include "lists.h"
 
 /**
+ * print_len_safe - function that prints a linked list with a loop safely.
+ * @head: pointer to the 1st node of the linked list
+ * Return: no. of elements in list
+ */
+size_t print_len_safe(const listint_t *head)
+{
+	const listint_t *tmp_n = NULL;
+	const listint_t *l_n = NULL;
+	size_t counter = 0;
+	size_t new_n;
+
+	tmp_n = head;
+	while (tmp_n)
+	{
+		counter++;
+		tmp_n = tmp_n->next;
+		l_n = head;
+		new_n = 0;
+		while (new_n < counter)
+		{
+			if (tmp_n == l_n)
+				return (counter);
+			l_n = l_n->next;
+			new_n++;
+		}
+		if (!head)
+			exit(98);
+	}
+	return (counter);
+}
+
+/**
  * free_listint_safe - frees a linked list
  * @h: pointer to the first node in the linked list
  *
@@ -8,32 +40,22 @@
  */
 size_t free_listint_safe(listint_t **h)
 {
-	size_t len = 0, ctrl_len;
-	listint_t *current, *temp, *control;
+	size_t len, i;
+	listint_t *temp;
 
 	if (!h || !*h)
-		return (len);
-	current = *h;
-	while (current)
-	{
-		len++;
-		temp = current->next;
-		free(current);
-		current = temp;
+		return (0);
 
-		control = *h;
-		ctrl_len = 0;
-		while (ctrl_len < len)
-		{
-			if (current == control)
-			{
-				*h = NULL;
-				return (len);
-			}
-			control = control->next;
-			ctrl_len++;
-		}
+	len = print_len_safe(*h);
+	i = 0;
+	while (i < len)
+	{
+		temp = (*h)->next;
+		free(*h);
+		*h = temp;
+		i++;
 	}
+
 	*h = NULL;
 	return (len);
 }
