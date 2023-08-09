@@ -1,77 +1,75 @@
-#include <stdlib.h>
 #include "main.h"
 
 /**
- * count_word - helper function to count the number of words in a string
- * @s: string to evaluate
+ * word_count - counts the number of words in string
+ * @str: the string
  *
- * Return: number of words
+ * Return: the number of words
  */
-int count_word(char *s)
+
+int word_count(char *str)
 {
-	int flag, c, w;
+	int flag = 0;
+	int wc = 0;
+	int i = 0;
 
-	flag = 0;
-	w = 0;
-
-	for (c = 0; s[c] != '\0'; c++)
+	while (str[i])
 	{
-		if (s[c] == ' ')
+		if (str[i] == ' ')
 			flag = 0;
+
 		else if (flag == 0)
 		{
 			flag = 1;
-			w++;
+			wc++;
 		}
+
+		i++;
 	}
 
-	return (w);
+	return (wc);
 }
+
 /**
- * **strtow - splits a string into words
- * @str: string to split
+ * strtow - splits string into words
+ * @str: the string
  *
- * Return: pointer to an array of strings (Success)
- * or NULL (Error)
+ * Return: a pointer to an array of strings
  */
 char **strtow(char *str)
 {
-	char **matrix, *tmp;
-	int i, k = 0, len = 0, words, c = 0, start, end;
+	int i, j = 0, k;
+	int words, len;
+	char **new = NULL, *start = NULL;
 
-	while (*(str + len))
-		len++;
-	words = count_word(str);
-	if (words == 0)
+	if (str == NULL || !(*str))
 		return (NULL);
 
-	matrix = (char **) malloc(sizeof(char *) * (words + 1));
-	if (matrix == NULL)
-		return (NULL);
+	words = word_count(str);
+	new = malloc(sizeof(char *) * (words + 1));
 
-	for (i = 0; i <= len; i++)
+	for (i = 0; i < words; i++)
 	{
-		if (str[i] == ' ' || str[i] == '\0')
+		len = 0;
+		while (str[j])
 		{
-			if (c)
-			{
-				end = i;
-				tmp = (char *) malloc(sizeof(char) * (c + 1));
-				if (tmp == NULL)
-					return (NULL);
-				while (start < end)
-					*tmp++ = str[start++];
-				*tmp = '\0';
-				matrix[k] = tmp - c;
-				k++;
-				c = 0;
-			}
+			if (str[j] == ' ')
+				j++;
+			else
+				break;
 		}
-		else if (c++ == 0)
-			start = i;
+		start = &(str[j]);
+		while (str[j] != ' ')
+		{
+			len++;
+			j++;
+		}
+		new[i] = malloc(sizeof(char) * (len + 1));
+		for (k = 0; k < len; k++)
+			new[i][k] = start[k];
+		new[i][k] = '\0';
 	}
+	new[words] = NULL;
 
-	matrix[k] = NULL;
-
-	return (matrix);
+	return (new);
 }
