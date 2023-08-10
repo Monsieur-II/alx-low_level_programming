@@ -62,7 +62,7 @@ int word_count(char *str)
  */
 char **strtow(char *str)
 {
-	int i, j = 0, k;
+	int i, j = 0;
 	int words, len;
 	char **new = NULL, *start = NULL;
 
