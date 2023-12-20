@@ -13,7 +13,7 @@ clean:
 	$(RM) *~ $(NAME) #there's a default value for RM ('rm -f') provided by make
 
 oclean:
-	$(RM) $(0BJ)
+	$(RM) $(OBJ)
 
 fclean: clean oclean
 
